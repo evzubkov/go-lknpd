@@ -1,20 +1,20 @@
 # go-lknpd
-Неофициальный клиент HTTP-API сайта [Мой налог для самозанятых](lknpd.nalog.ru).
-Используется метод логина через мобильный телефон. Для генерации id девайса и refresh-token используйте *first-login*::
+Unofficial client of the HTTP-API site [Мой налог для самозанятых](lknpd.nalog.ru).
+The login method is used via a mobile phone. To generate device id and refresh-token use *first-login*:
 ```
     go run first-login/main.go
 ```
-Вводим телефон (в формате 79XXXXXXXXX), код подтверждения из СМС.
+Enter the phone number (in the format 79XXXXXXXXXX), the confirmation code from SMS.
 
-# Использование
+# Usage
 ```
-    // Важно указать нужный часовой пояс, чтобы правильно формировалось время в чеке
+    // It is important to indicate the required time zone so that the time in the receipt is formed correctly
     client := lknpd.NewClient(
 		"Asia/Barnaul",
 		os.Getenv("DEVICE_ID"),
 		os.Getenv("REFRESH_TOKEN"))
 
-    // Создание чека
+    // Creating a check
 	saleId, err := client.CreateSale(lknpd.CreateSaleRequest{
 		PaymentType: lknpd.Cash,
 		Services: []*lknpd.Service{
@@ -29,7 +29,7 @@
 		log.Panic(err)
 	}
 
-    // Удаление чека
+    // Deleting a check
 	if err = client.CancelSale(lknpd.CancelSaleRequest{
 		CancelType:  lknpd.Cancel,
 		ReceiptUUID: saleId,
@@ -39,11 +39,11 @@
 ```
 
 
-### Источники и другие реализации
+### Sources and other implementations
 [Автоматизация для самозанятых: как интегрировать налог с IT проектом](https://habr.com/ru/post/436656/)
 
 JS lib [alexstep/moy-nalog](https://github.com/alexstep/moy-nalog)
 
 PHP lib [shoman4eg/moy-nalog](https://github.com/shoman4eg/moy-nalog)
 
-Go lib (с авторизация по логин/пароль) [shoman4eg/go-moy-nalog](https://github.com/shoman4eg/go-moy-nalog)
+Go lib (with authorization by login/password) [shoman4eg/go-moy-nalog](https://github.com/shoman4eg/go-moy-nalog)
