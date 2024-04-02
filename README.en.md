@@ -1,5 +1,5 @@
 # go-lknpd
-Unofficial client of the HTTP-API site [Мой налог для самозанятых](lknpd.nalog.ru).
+Unofficial client of the HTTP-API site [Мой налог для самозанятых](https://lknpd.nalog.ru/).
 The login method is used via a mobile phone. To generate device id and refresh-token use *first-login*:
 ```
     go run first-login/main.go

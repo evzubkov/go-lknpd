@@ -1,5 +1,5 @@
 # go-lknpd
-Неофициальный клиент HTTP-API сайта [Мой налог для самозанятых](lknpd.nalog.ru).
+Неофициальный клиент HTTP-API сайта [Мой налог для самозанятых](https://lknpd.nalog.ru/).
 Используется метод логина через мобильный телефон. Для генерации id девайса и refresh-token используйте *first-login*::
 ```
     go run first-login/main.go
